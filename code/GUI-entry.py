@@ -87,9 +87,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             # user manually select points
             if len(self.xy) > 0:
-                x_y = np.array(self.xy)*2
-                x_y[:, 0] = np.round((x_y[:, 0]*self.width)/1280)
-                x_y[:, 1] = np.round((x_y[:, 1] * self.height) / 720)
+                x_y = np.array(self.xy)
+                x_y[:, 0] = np.round(x_y[:, 0] / 640 * self.width)
+                x_y[:, 1] = np.round(x_y[:, 1] / 360 * self.height)
                 if self.pedestrian_flag:
                     main(x_y, self.videoPath, 1)
                 else:

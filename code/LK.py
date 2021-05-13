@@ -138,7 +138,7 @@ def main(manul_points, videoPath, pedestrian_flag):
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    output = cv2.VideoWriter('./output/final_output.mp4', fourcc, fps, (width, height))
+    output = cv2.VideoWriter('./output/keyboard_1.mp4', fourcc, fps, (width, height))
 
     # read old frame
     ret, frame_old = cap.read()
@@ -228,8 +228,8 @@ def main(manul_points, videoPath, pedestrian_flag):
                     lines = cv2.line(lines, (x_new, y_new), (x_old, y_old), (0, 255, 0), 2)
                     frame_show = cv2.add(frame_show, lines)
 
-        # cv2.imshow('frame', frame_show)
-        # cv2.waitKey(fps)
+        cv2.imshow('frame', frame_show)
+        cv2.waitKey(fps)
         output.write(frame_show)
 
         # update the new frame as old frame
